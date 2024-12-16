@@ -1,0 +1,42 @@
+<button (click)="sumarNumeros(3, 2)" class="btn btn-info">Sumar numeros</button>
+
+<input [(ngModel)]="number1" type="number" placeholder="Escribe un numero">
+<input [(ngModel)]="number2" type="number" placeholder="Escribe un numero">
+
+<button (click)="multiplicar(number1, number2)" class="btn btn-info">Multiplicar</button>
+
+<p>Resultado: {{resultado}}</p>
+
+<div>
+  <h1>Sumar edad progenitores</h1>
+  <div>
+    <label for="edadPadre">Edad del padre: </label>
+    <input type="number" id="edadPadre" [(ngModel)]="edadPadre" placeholder="Escribe la edad de tu padre">
+  </div>
+  <div>
+    <label for="edadMadre">Edad de la madre: </label>
+    <input type="number" id="edadMadre" [(ngModel)]="edadMadre" placeholder="Escribe la edad de tu madre">
+  </div>
+</div>
+
+<button class="btn btn-info" (click)="calcularEdadProgenitores(edadPadre, edadMadre)">Calcular</button>
+
+<p>Resultado de la suma de las edades de los progenitores: {{resultadoEdad}}</p>
+
+<!-- Ejercicio 1 -->
+
+<div>
+  <h1>Reparto de caramelos</h1>
+  <div>
+    <label for="numAmigos">¿Cuántos amigos tienes?: </label>
+    <input type="number" id="numAmigos" [(ngModel)]="numAmigos" placeholder="Escribe el numero de amigos que tienes">
+  </div>
+  <div>
+    <label for="numCaramelos">¿Cuántos caramelos tienes?: </label>
+    <input type="number" id="numCaramelos" [(ngModel)]="numCaramelos" placeholder="Escribe el numero de caramelos que tienes">
+  </div>
+</div>
+
+<button class="btn btn-info" (click)="repartoCaramelos(numAmigos, numCaramelos)">Repartir</button>
+
+<p>Cada amigo recibe: {{ reparto }} caramelos</p>

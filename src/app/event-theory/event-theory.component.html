@@ -1,0 +1,159 @@
+<div class="container mb-4">
+  <h1>Teoría Event Binding</h1>
+
+
+
+  <div class="mb-4">
+    <h3>Usando evento click</h3>
+
+    <button (click)="saludar()" class="btn btn-info">Te saludo</button>
+  </div>
+
+  <div class="mb-4">
+    <h3>Interpolación con evento click</h3>
+
+    {{ mensaje }}
+    <button (click)="cambiarMensaje()" class="btn btn-info">Cambiar Mensaje</button>
+  </div>
+
+  <div class="mb-4">
+    <h3>Usando el operador de incremento junto a un evento</h3>
+
+    <p>Has hecho click {{ clicks }} veces.</p>
+    <button (click)="incrementarClick()" class="btn btn-info">Haz click</button>
+  </div>
+
+  <div class="mb-4">
+    <h3>Eventos de ratón</h3>
+
+    <div class="mb-4">
+      <h4>Double click</h4>
+      <p>Has hecho doble click {{ clicks }} veces.</p>
+      <button (dblclick)="incrementarClick()" class="btn btn-info">Haz doble click</button>
+    </div>
+    <div class="mb-4">
+      <h4>Mouse enter</h4>
+      <p>{{ mensaje }}</p>
+      <button (mouseenter)="cambiarMensaje()" class="btn btn-info">Ponte encima mio</button>
+    </div>
+    <div class="mb-4">
+      <h4>Mouse leave</h4>
+      <button (mouseleave)="saludar()" class="btn btn-info">Sal del botón</button>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h3>Objeto Event</h3>
+    <!--El simbolo $ delante de event es una convención que nos permite diferenciar que estamos trabajando con un evento nativo del navegador, y no con una propiedad o variable de nuestro componente-->
+    <button (click)="trackingEvent($event)" class="btn btn-info">Haz click para ver el evento en consola</button>
+  </div>
+
+  <div class="mb-4">
+    <h3>Evento de formulario con object event</h3>
+
+    <h4>Input y tipo de evento en consola</h4>
+    <input type="text" placeholder="Escribe lo que quieras" (input)="mostrarInfoInput($event)">
+    <p>{{ inputValue }}</p>
+
+    <h4>Mostrar coordenadas con clientX y clientY</h4>
+    <button (click)="onMouseClick($event)" class="btn btn-info">Haz click para coordenadas</button>
+    <p>Coordenadas: {{ mouseX }}, {{ mouseY }}</p>
+  </div>
+
+  <div class="mb-4">
+    <h4>Input y formularios</h4>
+    <textarea name="textarea" id="textarea" (input)="actualizarTexto($event)" placeholder="Escribe lo que tu quieras"></textarea>
+    <p>El valor recogido en el text area es: {{ texto }}</p>
+  </div>
+
+  <div class="mb-4">
+    <h4>Select</h4>
+    <select (change)="actualizarSelect($event)" name="select" id="select">
+      <option value="1" selected>Opcion 1</option>
+      <option value="2">Opcion 2</option>
+      <option value="3">Opcion 3</option>
+    </select>
+
+    <p>Opcion seleccionada: {{ seleccion }}</p>
+  </div>
+
+  <div class="mb-4">
+    <h4>Imágenes</h4>
+
+    <img (click)="trackearImg($event)" src="https://static.nationalgeographic.es/files/styles/image_3200/public/75552.ngsversion.1422285553360.jpg?w=1900&h=1267" alt="Gato enfadado">
+    <img (click)="trackearImg($event)" src="https://images.ctfassets.net/denf86kkcx7r/1PKz6sDJvJXhONBEMzPQIY/48a700dc59e7f4fa64bff5ef5477ee2f/gato_gordo_santevet-83?h=320&w=520&fit=thumb" alt="Gato Gordo">
+
+    <p>La fuente de la imagen seleccionada es: {{ srcImg }}</p>
+    <p>El titulo de la imagen seleccionada es {{ altImageClicked }}</p>
+
+  </div>
+
+  <div class="mb-4">
+    <h3>Acceder al contenido de un elemento</h3>
+
+    <div>
+      <h4>Contenido de un div y un p</h4>
+
+      <div (click)="obtenerTextoDiv($event)">
+        Contenido del div
+      </div>
+
+      <p (click)="obtenerTextoP($event)" >Contenido del parrafo</p>
+    </div>
+
+    <div>
+      <h4>Mostrar el contenido con interpolación (haz click en el div o el p)</h4>
+      <p>div: {{contenidoDiv}}</p>
+      <p>parrafo: {{contenidoP}}</p>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h3>EJERCICIOS</h3>
+
+    <h4>Ejercicio 1</h4>
+
+    <p>¿Cuál es tu mascota favorita?</p>
+
+    <select (change)="mascotaSelect($event)" name="selectMascota" id="selectMascota" class="mb-3">
+      <option value="Perro" selected>Perro</option>
+      <option value="Gato">Gato</option>
+      <option value="Pájaro">Pájaros</option>
+      <option value="Peces">Peces</option>
+    </select>
+
+    <p>Tu mascota favorita es: {{ mascota }}</p>
+
+    <h4>Ejercicio 2</h4>
+
+    <p>Haz click en alguna película para ver la información de esta.</p>
+
+    <div class="videoclub mb-4">
+      <h5>Videoclub</h5>
+      <div class="d-flex  justify-content-center align-items-center mb-4">
+        <img (click)="infoPelis($event)" class="rounded mx-2 pelis" src="https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Interstellar - 2014" title="Sci-Fi">
+        <img (click)="infoPelis($event)" class="rounded mx-2 pelis" src="https://static.posters.cz/image/1300/posters/harry-potter-el-prisionero-de-azkaban-i161981.jpg" alt="Harry Potter y el Prisionero de Azkaban - 2004" title="Fantasía">
+        <img (click)="infoPelis($event)" class="rounded mx-2 pelis" src="https://pics.filmaffinity.com/El_seanor_de_los_anillos_La_comunidad_del_anillo-744631610-large.jpg" alt="El Señor de los Anillos - 2001" title="Aventura">
+        <img (click)="infoPelis($event)" class="rounded mx-2 pelis" src="https://m.media-amazon.com/images/I/71AbX3p8J1L._AC_UF894,1000_QL80_.jpg" alt="La Milla Verde - 1999" title="Drama">
+      </div>
+      <p>La fuente de la pelicula seleccionada es: <span class="inter">{{ srcPeli }}</span></p>
+      <p>El titulo y el año de la pelicula seleccionada es: <span class="inter">{{ altPeli }}</span></p>
+      <p>El género de la película seleccionada es: <span class="inter">{{titlePeli}}</span></p>
+    </div>
+
+    <div>
+      <h4>Ejercicio 3</h4>
+      <div>
+        <p>Selecciona el ingrediente que necesitas:</p>
+        <ul>
+          <li (click)="ingrediente($event)">Patatas</li>
+          <li (click)="ingrediente($event)">Tomates</li>
+          <li (click)="ingrediente($event)">Acelgas</li>
+          <li (click)="ingrediente($event)">Pimientos</li>
+        </ul>
+        <p>Necesito: <span class="inter">{{contenidoLi}}</span></p>
+      </div>
+    </div>
+  </div>
+
+</div>

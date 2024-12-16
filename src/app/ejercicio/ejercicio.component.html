@@ -1,0 +1,53 @@
+<div class="container justify-content-center d-flex flex-column">
+
+    <h3>Ejercicio 4 - SuperHeroes</h3>
+
+    <div class="mt-4 rounded p-3 superHeroe row justify-content-md-center align-items-center">
+        <div class="col col-md-auto">
+            <img class="rounded" [src]="srcInicial" alt="IronMan">
+        </div>
+        <div class="col col-md-auto align-items-center justify-content-center d-flex flex-column atributo rounded">
+            <h2 class="heroe rounded p-2 mt-4">{{ nombreHeroe }}</h2>
+            <h3 class="titulo">Atributos</h3>
+                <p  class="texto">{{atributoFuerza}} <span class="atributoFuerza"  [ngStyle]="{color: tieneFuerza()}">{{ lvlFuerza }}</span></p>
+                <p class="texto ">Misiones completadas: <span class="atributoFuerza">{{ misiones }}</span></p>
+                <p class="texto">Disponibilidad: <span class="atributoFuerza">{{ disponible }}</span></p>
+        </div>      
+    </div>
+
+    <div class="mt-2 rounded p-3 botones d-flex justify-content-start align-items-start">
+        <button *ngIf="puedeMision()" (click)="aniadirMision($event)" class="btn btn-heroe">Añadir misión</button>
+
+        <button (click)="mostrarInput()" class="btn btn-heroe">Modificar SuperHeroe</button>
+
+        <button (click)="mostrarFormulario()" class="btn btn-heroe">Crear SuperHeroe</button>
+    </div>
+
+    <div *ngIf="mostrarInputNombre" class="mt-2 rounded p-3 botones d-flex flex-column justify-content-start align-items-center">
+        <label for="nuevoNom">Modifica el nombre</label>
+        <input type="text" id="nuevoNom" [(ngModel)]="nuevoNombre" class="form-control" placeholder="Escribe el nuevo nombre...">
+        <button class="btn btn-heroe" (click)="modificarNombre()">Guardar</button>
+    </div>
+
+    <div *ngIf="mostrarForm" class="mt-2 rounded p-3 botones d-flex flex-column justify-content-start align-items-center">
+        
+        <label for="selectImg" class="mb-2">Escoge la imagen a mostrar</label>
+        <select [(ngModel)]="selectedHero" (change)="seleccionarSuperImg()" class="mb-2" name="imagen" id="selectImg">
+            <option value="Spiderman">Spiderman</option>
+            <option value="Lobezno">Lobezno</option>
+            <option value="Deadpool">Deadpool</option>
+        </select>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="nuevoNombre" class="form-control" placeholder="Escribe el nombre del SuperHeroe...">
+
+        <label for="lvl">Nivel de Fuerza:</label>
+        <input type="number" id="lvl" [(ngModel)]="nuevaFuerza" class="form-control" placeholder="Escribe el nivel de fuerza...">
+
+        <label for="mision">Misiones completadas:</label>
+        <input type="number" id="mision" [(ngModel)]="nuevasMisiones" class="form-control" placeholder="Escribe las misiones compeltadas...">
+
+        <button class="btn btn-heroe" (click)="crearSuper()">Crear SuperHeroe</button>
+    </div>
+
+</div>

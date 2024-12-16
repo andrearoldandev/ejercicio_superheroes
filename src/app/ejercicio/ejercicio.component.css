@@ -1,0 +1,43 @@
+img {
+    width: 15rem;
+    height: 24rem;
+}
+
+.heroe {
+    border: 1px solid white;
+    color: white;
+}
+
+.superHeroe{
+    background-color: rgb(62, 37, 95);
+    width: 38rem;
+}
+
+.titulo{
+    color: white;
+    margin: 4rem;
+}
+
+.texto{
+    color: white;
+}
+
+.btn-heroe{
+    background-color: rgb(62, 37, 95);
+    color: white;
+    margin: 1rem;
+
+    &:hover{
+        background-color: rgb(29, 29, 29);
+    }
+}
+
+.atributo{
+    background-color: rgb(29, 29, 29);
+    padding: 0.5rem ;
+}
+
+.atributoFuerza {
+    font-weight: bold;
+    padding: 0.5rem ;
+}
